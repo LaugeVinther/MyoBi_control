@@ -21,6 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ADCreader.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="handConnect.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MyoBi_control.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
