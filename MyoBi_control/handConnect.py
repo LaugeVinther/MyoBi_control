@@ -7,5 +7,5 @@ arduino = serial.Serial('COM3',115200, timeout=None, write_timeout=None)
 
 
 def sendCommand(command):
-    with serial.Serial('/dev/serial/by-path/platform-3f980000.usb-usb-0:1.3:1.0', 115200, timeout=1) as ser:
+    with serial.Serial('/dev/serial/by-path/platform-3f980000.usb-usb-0:1.2:1.0', 115200, timeout=1) as ser:
         ser.write(command)
