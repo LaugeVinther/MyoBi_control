@@ -7,5 +7,5 @@ import serial
 
 
 def sendCommand(command):
-    hand = serial.Serial('/dev/serial/by-path/platform-3f980000.usb-usb-0:1.2:1.0', 115200, timeout=1)
+    hand = serial.Serial('/dev/serial/by-path/platform-3f980000.usb-usb-0:1.3:1.0', 115200, timeout=1)
     hand.write(command)
