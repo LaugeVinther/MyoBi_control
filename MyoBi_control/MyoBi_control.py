@@ -25,12 +25,12 @@ while True:
 		
 		if(statistics.mean(Voltage) > 2):
 			if(gripDone == False):
-				# hC.sendCommand(
+				hC.sendCommand(b'F0 P100 \n\r F1 P100 \n\r F2 P0 \n\r F3 P100 \n\r')
 				gripDone = True
 				Voltage.clear()
 				time.sleep(1)
 			else:
-				# hC.sendCommand(
+				hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 				gripDone = False
 				Voltage.clear()
 				time.sleep(1)
