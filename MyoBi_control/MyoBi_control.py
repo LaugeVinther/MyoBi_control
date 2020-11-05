@@ -15,7 +15,7 @@ while True:
 
 	data = ADC.getData
 
-	if(len(Voltage)<100):
+	if(len(Voltage)<50):
 		Voltage.append(data)
 	else:
 		for i in range(len(Voltage)-1):
@@ -23,14 +23,17 @@ while True:
 		del Voltage[-1]
 		Voltage.append(data)
 		
-		if(statistics.mean(Voltage) > 25):
+		if(statistics.mean(Voltage) > 2):
 			if(gripDone == False):
 				# hC.sendCommand(
 				gripDone = True
-				#Sleep
+				Voltage.clear()
+				time.sleep(1)
 			else:
 				# hC.sendCommand(
 				gripDone = False
+				Voltage.clear()
+				time.sleep(1)
 
 	time.sleep(0.01)
 
