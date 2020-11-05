@@ -13,7 +13,7 @@ gripDone = False
 
 while True:
 
-	data = ADC.getData
+	data = ADC.getData()
 
 	if(len(Voltage)<50):
 		Voltage.append(data)
@@ -23,7 +23,8 @@ while True:
 		del Voltage[-1]
 		Voltage.append(data)
 		
-		if(statistics.mean(Voltage) > 2,5):
+
+		if(statistics.mean(Voltage) > 2.5):
 			if(gripDone == False):
 				hC.sendCommand(b'F0 P100 \n\r F1 P100 \n\r F2 P0 \n\r F3 P100 \n\r')
 				gripDone = True
