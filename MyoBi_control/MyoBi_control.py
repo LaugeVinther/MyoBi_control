@@ -32,11 +32,13 @@ try:
 					gripDone = True
 					Voltage.clear()
 					time.sleep(1)
+					print('Spænding under 2.5')
 				else:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					Voltage.clear()
 					time.sleep(1)
+					print('Spænding over 2.5')
 except KeyboardInterrupt:
 	pass
 
