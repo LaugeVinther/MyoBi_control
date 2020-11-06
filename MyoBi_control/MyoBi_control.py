@@ -33,12 +33,16 @@ try:
 					Voltage.clear()
 					time.sleep(5)
 					print('Spænding under 2.5')
+					print(str(statistics.mean(Voltage)))
+
 				else:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					Voltage.clear()
 					time.sleep(5)
 					print('Spænding over 2.5')
+					print(str(statistics.mean(Voltage)))
+
 except KeyboardInterrupt:
 	pass
 
