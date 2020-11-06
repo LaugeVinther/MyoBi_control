@@ -46,7 +46,7 @@ total_time = end - start #tidsmåling
 
 print("Time of capture: {}s".format(total_time)) #tidsmåling
 print("Sample rate={}".format(samples / total_time)) #tidsmåling
-print(str(samples)
+print(str(samples))
 
 
 
