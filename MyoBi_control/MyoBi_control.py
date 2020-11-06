@@ -8,7 +8,7 @@ Voltage = []
 gripDone = False
 
 start = time.monotonic()
-counter = 0
+samples = 0
 
 try:
 	while True:
@@ -17,11 +17,11 @@ try:
 
 		if(len(Voltage)<50):
 			Voltage.append(data)
-			counter += 1 #tidsmåling
+			samples += 1 #tidsmåling
 		else:
 			for i in range(len(Voltage)-1):
 				Voltage[i]=Voltage[i+1]
-				counter += 1 #tidsmåling
+				samples += 1 #tidsmåling
 			del Voltage[-1]
 			Voltage.append(data)
 		
@@ -45,7 +45,7 @@ end = time.monotonic() #tidsmåling
 total_time = end - start #tidsmåling
 
 print("Time of capture: {}s".format(total_time)) #tidsmåling
-print("Actual={}".format(SAMPLES / total_time)) #tidsmåling
+print("Actual={}".format(samples / total_time)) #tidsmåling
 
 
 
