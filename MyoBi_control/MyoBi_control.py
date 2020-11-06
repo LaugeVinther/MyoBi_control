@@ -14,14 +14,14 @@ try:
 	while True:
 
 		data = ADC.getData()
+		samples += 1 #tidsmåling
+
 
 		if(len(Voltage)<50):
 			Voltage.append(data)
-			samples += 1 #tidsmåling
 		else:
 			for i in range(len(Voltage)-1):
 				Voltage[i]=Voltage[i+1]
-				samples += 1 #tidsmåling
 			del Voltage[-1]
 			Voltage.append(data)
 		
@@ -46,7 +46,7 @@ total_time = end - start #tidsmåling
 
 print("Time of capture: {}s".format(total_time)) #tidsmåling
 print("Sample rate={}".format(samples / total_time)) #tidsmåling
-print(str(samples))
+print(str('\nSamples:' + samples))
 
 
 
