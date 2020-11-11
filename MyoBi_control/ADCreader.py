@@ -15,7 +15,10 @@ i2c = busio.I2C(board.SCL, board.SDA)
 ads = ADS.ADS1015(i2c)
 
 # Create single-ended input on channel 0
-chan = AnalogIn(ads, ADS.P0)
+chan0 = AnalogIn(ads, ADS.P0)
+chan1 = AnalogIn(ads, ADS.P1)
+chan2 = AnalogIn(ads, ADS.P2)
+chan3 = AnalogIn(ads, ADS.P3)
 
 # Create differential input between channel 0 and 1
 # chan = AnalogIn(ads, ADS.P0, ADS.P1)
@@ -32,7 +35,11 @@ chan = AnalogIn(ads, ADS.P0)
 
 def getData():
     try:
-        data = chan.voltage
+        data[0] = chan0.voltage
+        data[1] = chan1.voltage
+        data[2] = chan2.voltage
+        data[3] = chan3.voltage
+
         return data
     except KeyboardInterrupt:
         pass
