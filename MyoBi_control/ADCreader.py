@@ -14,6 +14,9 @@ i2c = busio.I2C(board.SCL, board.SDA)
 # Create the ADC object using the I2C bus
 ads = ADS.ADS1015(i2c)
 
+ads.data_rate = 3300
+ads.mode = Mode.CONTINUOUS
+
 # Create single-ended input on channel 0
 chan0 = AnalogIn(ads, ADS.P0)
 chan1 = AnalogIn(ads, ADS.P1)
@@ -33,8 +36,12 @@ chan3 = AnalogIn(ads, ADS.P3)
 
 #print("{:>5}\t{:>5}".format("raw", "v"))
 
+
+
 def getData():
     try:
+        data = []
+        
         data[0] = chan0.voltage
         data[1] = chan1.voltage
         data[2] = chan2.voltage
