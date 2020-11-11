@@ -43,10 +43,10 @@ def getData():
     try:
         data = []
         
-        data[0] = chan0.voltage
-        data[1] = chan1.voltage
-        data[2] = chan2.voltage
-        data[3] = chan3.voltage
+        data.append(chan0.voltage)
+        data.append(chan1.voltage)
+        data.append(chan2.voltage)
+        data.append(chan3.voltage)
 
         return data
     except KeyboardInterrupt:
