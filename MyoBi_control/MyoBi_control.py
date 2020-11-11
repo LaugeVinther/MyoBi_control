@@ -27,7 +27,7 @@ try:
 		samples += 1 #tidsmåling
 
 
-		if(len(data0)<50):
+		if(len(sensor0)<50):
 			sensor0.append(data[0])
 			sensor1.append(data[1])
 			sensor2.append(data[2])
