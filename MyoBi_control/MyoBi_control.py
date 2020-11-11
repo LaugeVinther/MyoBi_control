@@ -52,13 +52,16 @@ try:
 			sensor3.append(data[3])
 					
 
-			if(statistics.mean(data2) > 2):
+			if(statistics.mean(sensor2) > 2):
 				if(gripDone == False):
 					hC.sendCommand(b'G0 C \n\r F0 P0 \n\r')
 					gripDone = True
 					print(str(statistics.mean(Voltage)))
 					print('\GripDone skifter til true')
-					data2.clear()
+					sensor0.clear()
+					sensor1.clear()
+					sensor2.clear()
+					sensor3.clear()
 					time.sleep(1)
 					
 
@@ -67,16 +70,22 @@ try:
 					gripDone = False
 					print(str(statistics.mean(Voltage)))
 					print('\nGripDone skifter til false')
-					data2.clear()
+					sensor0.clear()
+					sensor1.clear()
+					sensor2.clear()
+					sensor3.clear()
 					time.sleep(1)
 
-			if(statistics.mean(data3) > 1.5):
+			if(statistics.mean(sensor3) > 1.5):
 				if(gripDone == False):
 					hC.sendCommand(b'F0 P75 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = True
 					print(str(statistics.mean(Voltage)))
 					print('\nGripDone skifter til true')
-					data3.clear()
+					sensor0.clear()
+					sensor1.clear()
+					sensor2.clear()
+					sensor3.clear()
 					time.sleep(1)
 					
 
@@ -85,7 +94,10 @@ try:
 					gripDone = False
 					print(str(statistics.mean(Voltage)))
 					print('\nGripDone skifter til false')
-					data3.clear()
+					sensor0.clear()
+					sensor1.clear()
+					sensor2.clear()
+					sensor3.clear()
 					time.sleep(1)
 					
 
