@@ -76,7 +76,7 @@ try:
 					sensor3.clear()
 					time.sleep(1)
 
-			if(statistics.mean(sensor3) > 1.5):
+			elif(statistics.mean(sensor3) > 1.5):
 				if(gripDone == False):
 					hC.sendCommand(b'F0 P75 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = True
