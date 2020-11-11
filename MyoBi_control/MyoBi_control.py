@@ -56,7 +56,7 @@ try:
 				if(gripDone == False):
 					hC.sendCommand(b'G0 C \n\r F0 P0 \n\r')
 					gripDone = True
-					print(str(statistics.mean(Voltage)))
+					print(str(statistics.mean(sensor2)))
 					print('\GripDone skifter til true')
 					sensor0.clear()
 					sensor1.clear()
@@ -68,7 +68,7 @@ try:
 				else:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
-					print(str(statistics.mean(Voltage)))
+					print(str(statistics.mean(sensor2)))
 					print('\nGripDone skifter til false')
 					sensor0.clear()
 					sensor1.clear()
@@ -80,7 +80,7 @@ try:
 				if(gripDone == False):
 					hC.sendCommand(b'F0 P75 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = True
-					print(str(statistics.mean(Voltage)))
+					print(str(statistics.mean(sensor3)))
 					print('\nGripDone skifter til true')
 					sensor0.clear()
 					sensor1.clear()
@@ -92,7 +92,7 @@ try:
 				else:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
-					print(str(statistics.mean(Voltage)))
+					print(str(statistics.mean(sensor3)))
 					print('\nGripDone skifter til false')
 					sensor0.clear()
 					sensor1.clear()
