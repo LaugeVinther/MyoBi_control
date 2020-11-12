@@ -53,10 +53,10 @@ try:
 			
 			if(statistics.mean(sensor1) > 2):
 				if(gripDone == False):
-					hC.sendCommand("Lauge indsæt bevægelse")
+					hC.sendCommand(b'F0 P80 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = True
 					print(str(statistics.mean(sensor1)))
-					print('\GripDone skifter til true')
+					print('\Bottle grip udført')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -68,7 +68,7 @@ try:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor1)))
-					print('\nGripDone skifter til false')
+					print('\nGår tilbage til åben hånd')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -80,7 +80,7 @@ try:
 					hC.sendCommand(b'G0 C \n\r F0 P0 \n\r')
 					gripDone = True
 					print(str(statistics.mean(sensor2)))
-					print('\GripDone skifter til true')
+					print('\Bag grip udført')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -92,7 +92,7 @@ try:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor2)))
-					print('\nGripDone skifter til false')
+					print('\nGår tilbage til åben hånd')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -101,10 +101,10 @@ try:
 
 			elif(statistics.mean(sensor3) > 1.5):
 				if(gripDone == False):
-					hC.sendCommand(b'F0 P75 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
+					hC.sendCommand(b'F0 P75 \n\r F1 P75 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = True
 					print(str(statistics.mean(sensor3)))
-					print('\nGripDone skifter til true')
+					print('\Pinch grip udført')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -116,7 +116,7 @@ try:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor3)))
-					print('\nGripDone skifter til false')
+					print('\nGår tilbage til åben hånd')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
