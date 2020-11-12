@@ -51,12 +51,12 @@ try:
 			sensor2.append(data[2])
 			sensor3.append(data[3])
 			
-			if(statistics.mean(sensor1) > 1.7):
+			if(statistics.mean(sensor1) > 1.5):
 				if(gripDone == False):
 					hC.sendCommand(b'F0 P80 \n\r F1 P80 \n\r F2 P80 \n\r F3 P80 \n\r')
 					gripDone = True
 					print(str(statistics.mean(sensor1)))
-					print('n\Bottle grip udført')
+					print('Bottle grip udført')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -68,7 +68,7 @@ try:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor1)))
-					print('\nGår tilbage til åben hånd')
+					print('Går tilbage til åben hånd \n\r')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -77,10 +77,10 @@ try:
 
 			elif(statistics.mean(sensor2) > 2):
 				if(gripDone == False):
-					hC.sendCommand(b'F0 P0 F1 P100 F2 P100 F3 P100 \n\r')
+					hC.sendCommand(b'F0 P0 \n\r F1 P100 \n\r F2 P100 \n\r F3 P100 \n\r')
 					gripDone = True
 					print(str(statistics.mean(sensor2)))
-					print('n\Bag grip udført')
+					print('Bag grip udført')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -92,7 +92,7 @@ try:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor2)))
-					print('\nGår tilbage til åben hånd')
+					print('Går tilbage til åben hånd\n\r')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -101,10 +101,10 @@ try:
 
 			elif(statistics.mean(sensor3) > 1.5):
 				if(gripDone == False):
-					hC.sendCommand(b'F0 P75 \n\r F1 P75 \n\r F2 P0 \n\r F3 P0 \n\r')
+					hC.sendCommand(b'F0 P90 \n\r F1 P75 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = True
 					print(str(statistics.mean(sensor3)))
-					print('n\Pinch grip udført')
+					print('Pinch grip udført')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -116,7 +116,7 @@ try:
 					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor3)))
-					print('\nGår tilbage til åben hånd')
+					print('Går tilbage til åben hånd \n\r')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
