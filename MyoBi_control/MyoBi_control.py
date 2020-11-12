@@ -50,9 +50,32 @@ try:
 			sensor1.append(data[1])
 			sensor2.append(data[2])
 			sensor3.append(data[3])
+			
+			if(statistics.mean(sensor1) > 2):
+				if(gripDone == False):
+					hC.sendCommand("Lauge indsæt bevægelse")
+					gripDone = True
+					print(str(statistics.mean(sensor1)))
+					print('\GripDone skifter til true')
+					sensor0.clear()
+					sensor1.clear()
+					sensor2.clear()
+					sensor3.clear()
+					time.sleep(1)
 					
 
-			if(statistics.mean(sensor2) > 2):
+				else:
+					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
+					gripDone = False
+					print(str(statistics.mean(sensor1)))
+					print('\nGripDone skifter til false')
+					sensor0.clear()
+					sensor1.clear()
+					sensor2.clear()
+					sensor3.clear()
+					time.sleep(1)
+
+			elif(statistics.mean(sensor2) > 2):
 				if(gripDone == False):
 					hC.sendCommand(b'G0 C \n\r F0 P0 \n\r')
 					gripDone = True
