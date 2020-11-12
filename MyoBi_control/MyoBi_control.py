@@ -101,7 +101,7 @@ try:
 
 			elif(statistics.mean(sensor3) > 1.5):
 				if(gripDone == False):
-					hC.sendCommand(b'F0 P75 \n\r F1 P75 \n\r F2 P0 \n\r F3 P0 \n\r')
+					hC.sendCommand(b'F0 P75 \n\r F1 P50 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = True
 					print(str(statistics.mean(sensor3)))
 					print('\Pinch grip udført')
