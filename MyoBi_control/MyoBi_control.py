@@ -53,7 +53,7 @@ try:
 			
 			if(statistics.mean(sensor1) > 1.5):
 				if(gripDone == False):
-					hC.sendCommand(b'F0 P80 \n\r F1 P80 \n\r F2 P80 \n\r F3 P80 \n\r')
+					hC.sendCommand(b'F0 P0 \n\r F1 P100 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = True
 					print(str(statistics.mean(sensor1)))
 					print('Bottle grip udført')
