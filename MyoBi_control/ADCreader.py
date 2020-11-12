@@ -37,8 +37,6 @@ chan3 = AnalogIn(ads, ADS.P3)
 
 #print("{:>5}\t{:>5}".format("raw", "v"))
 
-
-
 def getData():
     try:
         data = []

@@ -1,31 +1,34 @@
-import handConnect as hC
+import HandConnect as HC
 import ADCreader as ADC
 import time
 import statistics
+import ConfigurationController as CC
+import concurrent.futures
 
+operationState = True
+gripDone = False
 
 sensor0 = []
 sensor1 = []
 sensor2 = []
 sensor3 = []
 
-bagGripDone = False
-pinchGripDone = False
-bottleGripDone = False
-pointGripDone = False
-gripDone = False
+
+def listen():
+	with concurrent.futures.ThreadPoolExecutor() as executor:
+		future = executor.submit(CC.listenForStateChange)
+		return_value = future.result()
+		operationState = return_value
+
+listen()
+grips = CC.loadGrips()
 
 
-start = time.monotonic()
-samples = 0
+while True:
 
-try:
-	while True:
+	if (operationState == True):
 
 		data = ADC.getData()
-
-		samples += 1 #tidsmåling
-
 
 		if(len(sensor0)<50):
 			sensor0.append(data[0])
@@ -53,19 +56,19 @@ try:
 			
 			if(statistics.mean(sensor1) > 1.5):
 				if(gripDone == False):
-					hC.sendCommand(b'F0 P100 \n\r F1 P0 \n\r F2 P100 \n\r F3 P100 \n\r')
+					HC.sendCommand(grips[0])
 					gripDone = True
 					print(str(statistics.mean(sensor1)))
-					print('Bottle grip udført')
+					print('Bottle grip udført (ændret til point)')
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
 					sensor3.clear()
 					time.sleep(1)
 					
-
 				else:
-					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
+					HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
+					#HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor1)))
 					print('Går tilbage til åben hånd \n\r')
@@ -77,7 +80,7 @@ try:
 
 			elif(statistics.mean(sensor2) > 1.5):
 				if(gripDone == False):
-					hC.sendCommand(b'F0 P0 \n\r F1 P100 \n\r F2 P100 \n\r F3 P100 \n\r')
+					HC.sendCommand(grips[1])
 					gripDone = True
 					print(str(statistics.mean(sensor2)))
 					print('Bag grip udført')
@@ -87,9 +90,8 @@ try:
 					sensor3.clear()
 					time.sleep(1)
 					
-
 				else:
-					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
+					HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor2)))
 					print('Går tilbage til åben hånd\n\r')
@@ -101,7 +103,7 @@ try:
 
 			elif(statistics.mean(sensor3) > 1.5):
 				if(gripDone == False):
-					hC.sendCommand(b'F0 P90 \n\r F1 P75 \n\r F2 P0 \n\r F3 P0 \n\r')
+					HC.sendCommand(grips[2])
 					gripDone = True
 					print(str(statistics.mean(sensor3)))
 					print('Pinch grip udført')
@@ -111,9 +113,8 @@ try:
 					sensor3.clear()
 					time.sleep(1)
 					
-
 				else:
-					hC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
+					HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor3)))
 					print('Går tilbage til åben hånd \n\r')
@@ -122,18 +123,23 @@ try:
 					sensor2.clear()
 					sensor3.clear()
 					time.sleep(1)
-					
+	else:
+		grips = CC.getGripsFromPC()
+		CC.saveGrips()
+		operationState = True
+		listen()
 
-except KeyboardInterrupt:
-	pass
 
-end = time.monotonic() #tidsmåling
 
-total_time = end - start #tidsmåling
 
-print("Time of capture: {}s".format(total_time)) #tidsmåling
-print("Sample rate={}".format(samples / total_time)) #tidsmåling
-print('\nSamples:' + str(samples))
+
+		#end = time.monotonic() #tidsmåling
+
+		#total_time = end - start #tidsmåling
+
+		#print("Time of capture: {}s".format(total_time)) #tidsmåling
+		#print("Sample rate={}".format(samples / total_time)) #tidsmåling
+		#print('\nSamples:' + str(samples))
 
 
 

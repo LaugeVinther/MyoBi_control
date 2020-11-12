@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ebaf6ab5-eb2d-45d2-892a-5c791fc77e8e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>MyoBi_control.py</StartupFile>
+    <StartupFile>OperationController.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,10 +24,22 @@
     <Compile Include="ADCreader.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="handConnect.py">
+    <Compile Include="ConfigurationController.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MyoBi_control.py" />
+    <Compile Include="HandConnect.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OperationController.py" />
+    <Compile Include="NetworkCommunication.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SerialHandler.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StateController.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
