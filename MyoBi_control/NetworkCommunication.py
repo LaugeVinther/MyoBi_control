@@ -30,6 +30,7 @@ class NetworkCommunication:
             if not data: break # Skal måske fjernes
             conn.send(data)  # echo
         conn.close()
+        print("Ude af loopet")
         return data #ikke sikker på denne
 
 

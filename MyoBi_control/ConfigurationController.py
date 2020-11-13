@@ -9,7 +9,7 @@ operationState = True
 
 def listenForStateChange():
     state = NC.receiveTCP()
-    
+    print(state)
     if(state == "1"):
         global operationState
         operationState = True

@@ -123,6 +123,7 @@ while True:
 					sensor3.clear()
 					time.sleep(1)
 	else:
+		print("Nede i else i operationcontroller")
 		grips = CC.getGripsFromPC()
 		CC.saveGrips()
 		CC.operationState = True
