@@ -2,18 +2,25 @@ import socket
 
 # Opsætning
 IP = socket.gethostbyname(socket.gethostname())
+setupDone = false
 
-UDP_PORT = 8201
-UDP_ADDR = (IP, UDP_PORT)
-UDP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+def setup():
+    UDP_PORT = 8201
+    UDP_ADDR = (IP, UDP_PORT)
+    UDP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-TCP_PORT = 8202
-TCP_ADDR = (IP, TCP_PORT)
-TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-BUFFER_SIZE = 1024  # Skiftet fra 20
+    TCP_PORT = 8202
+    TCP_ADDR = (IP, TCP_PORT)
+    TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    BUFFER_SIZE = 1024  # Skiftet fra 20
+
+    setupDone = true
 
 # TCP
 def receiveTCP():
+    if(setup == false):
+        setup()
+
     TCP_SOCK.bind(TCP_ADDR)
     TCP_SOCK.listen(1)
     conn, addr = TCP_SOCK.accept()
