@@ -2,7 +2,7 @@ import socket
 
 # Opsætning
 IP = socket.gethostbyname(socket.gethostname())
-setupDone = false
+setupDone = False
 
 def setup():
     UDP_PORT = 8201
@@ -14,11 +14,11 @@ def setup():
     TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     BUFFER_SIZE = 1024  # Skiftet fra 20
 
-    setupDone = true
+    setupDone = True
 
 # TCP
 def receiveTCP():
-    if(setup == false):
+    if(setup == False):
         setup()
 
     TCP_SOCK.bind(TCP_ADDR)
