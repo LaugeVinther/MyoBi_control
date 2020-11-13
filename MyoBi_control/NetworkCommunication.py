@@ -16,8 +16,6 @@ class NetworkCommunication:
 
     # TCP
     def receiveTCP():
-        if(setupDone == False):
-            setup()
 
         TCP_SOCK.bind(TCP_ADDR)
         TCP_SOCK.listen(1)
