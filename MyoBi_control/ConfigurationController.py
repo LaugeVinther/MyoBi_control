@@ -1,7 +1,7 @@
 import SerialHandler as SH
 import NetworkCommunication
 
-NC = NetworkCommunication()
+NC = NetworkCommunication.NetworkCommunication
 
 gripsArray = []
 operationState = True
