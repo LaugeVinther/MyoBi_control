@@ -3,7 +3,7 @@ def readFromFile(file):
     return f.read()
 
 def writeToFile(file, text):
-    f = open(filename, "x")
+    f = open(filename, "w")
     f.write(text)
 
 def writeLinesToFile(file, array):

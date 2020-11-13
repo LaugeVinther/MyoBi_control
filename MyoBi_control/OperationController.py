@@ -21,7 +21,8 @@ def listen():
 	thread.start()
 
 listen()
-grips = CC.loadGrips()
+f = open("/conf/grips/grips.txt", "x")
+#grips = CC.loadGrips()
 
 
 while True:
