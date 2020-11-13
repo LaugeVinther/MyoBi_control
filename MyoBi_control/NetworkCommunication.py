@@ -1,6 +1,6 @@
 import socket
 
-class NetworkCommunication():
+class NetworkCommunication:
 
     # Opsætning
     IP = socket.gethostbyname(socket.gethostname())
