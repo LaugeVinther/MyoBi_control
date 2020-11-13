@@ -14,6 +14,7 @@ def listenForStateChange():
         global operationState
         operationState = True
     elif(state == "2"):
+        print("Operation state ændret til false")
         operationState = False
 
 def getGripsFromPC():

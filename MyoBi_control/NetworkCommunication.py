@@ -20,10 +20,13 @@ class NetworkCommunication:
 
         self.TCP_SOCK.bind(self.TCP_ADDR)
         self.TCP_SOCK.listen(1)
+        print("Lytter på TCP")
         conn, addr = self.TCP_SOCK.accept()
 
         while 1:
+            print("Inde i while loopet")
             data = conn.recv(self.BUFFER_SIZE)
+            print(data)
             if not data: break # Skal måske fjernes
             conn.send(data)  # echo
         conn.close()
