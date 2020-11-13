@@ -22,6 +22,7 @@ def listen():
 listen()
 grips = CC.loadGrips()
 
+print(grips[0] + ", " + grips[1] + ", " + grips[2])
 
 while True:
 
@@ -125,6 +126,10 @@ while True:
 	else:
 		print("Nede i else i operationcontroller")
 		grips = CC.getGripsFromPC()
+
+		print(grips[0] + ", " + grips[1] + ", " + grips[2])
+
+
 		CC.saveGrips()
 		CC.operationState = True
 		listen()

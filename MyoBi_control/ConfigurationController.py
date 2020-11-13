@@ -23,21 +23,22 @@ def listenForStateChange():
 def getGripsFromPC():
     grips = NC.receiveTCP()
     grips = grips.decode('utf-8')
-
-    dataSplit = grips.split(";")
-
+    
     global gripsArray
-    gripsArray = dataSplit[0] + "\n" + dataSplit[1] + "\n" + dataSplit[2] + "\n"
+    gripsArray = grips.split(";")
+
+   # gripsArray = dataSplit[0] + dataSplit[1] + dataSplit[2]
         
     return gripsArray
 
 def saveGrips():
+    gripsTxt = gripsArray[0] + ";" + gripsArray[1] + ";" + gripsArray[2]
     SH.writeLinesToFile("/home/pi/conf/grips/grips.txt", gripsArray)
 
 def loadGrips():
     grips = SH.readFromFile("/home/pi/conf/grips/grips.txt")
 
     global gripsArray
-    gripsArray = grips.split("\n")
+    gripsArray = grips.split(";")
 
     return gripsArray;
