@@ -1,9 +1,10 @@
-import HandConnect as HC
 import ADCreader as ADC
 import time
 import statistics
 import ConfigurationController as CC
 import threading
+import handConnect as HC
+
 
 #operationState = True
 gripDone = False
