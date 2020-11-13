@@ -14,9 +14,9 @@ def listenForStateChange():
         operationState = False
 
 def getGripsFromPC():
-    data = NC.receiveTCP()
+    grips = NC.receiveTCP()
 
-    dataSplit = data.split(";")
+    dataSplit = grips.split(";")
 
     global gripsArray
     gripsArray = dataSplit[0] + "\n" + dataSplit[1] + "\n" + dataSplit[2] + "\n"
@@ -30,6 +30,6 @@ def loadGrips():
     grips = SH.readFromFile("/home/pi/conf/grips/grips.txt")
 
     global gripsArray
-    gripsArray = data.split("\n")
+    gripsArray = grips.split("\n")
 
     return gripsArray;
