@@ -13,12 +13,13 @@ class NetworkCommunication:
         self.TCP_PORT = 8202
         self.TCP_ADDR = (self.IP, self.TCP_PORT)
         self.TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.TCP_SOCK.bind(self.TCP_ADDR)
         self.BUFFER_SIZE = 1024  # Skiftet fra 20
+
 
     # TCP
     def receiveTCP(self):
 
-        self.TCP_SOCK.bind(self.TCP_ADDR)
         self.TCP_SOCK.listen(1)
         print("Lytter på TCP")
         conn, addr = self.TCP_SOCK.accept()
