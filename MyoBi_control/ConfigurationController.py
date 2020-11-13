@@ -8,12 +8,15 @@ operationState = True
 
 
 def listenForStateChange():
-    state = NC.receiveTCP()
-    print(state)
-    if(state == "1"):
+    data = NC.receiveTCP()
+    data = data.decode('utf-8')
+
+    print(data)
+
+    if(data == "1"):
         global operationState
         operationState = True
-    elif(state == "2"):
+    elif(data == "2"):
         print("Operation state ændret til false")
         operationState = False
 
