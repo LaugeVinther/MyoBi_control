@@ -1,4 +1,5 @@
 import SerialHandler as SH
+import NetworkCommunication
 
 NC = NetworkCommunication()
 
