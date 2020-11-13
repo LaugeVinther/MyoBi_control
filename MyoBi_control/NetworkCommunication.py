@@ -7,11 +7,11 @@ class NetworkCommunication:
         self.IP = socket.gethostbyname(socket.gethostname())
 
         self.UDP_PORT = 8201
-        self.UDP_ADDR = (IP, UDP_PORT)
+        self.UDP_ADDR = (self.IP, self.UDP_PORT)
         self.UDP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
         self.TCP_PORT = 8202
-        self.TCP_ADDR = (IP, TCP_PORT)
+        self.TCP_ADDR = (self.IP, self.TCP_PORT)
         self.TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.BUFFER_SIZE = 1024  # Skiftet fra 20
 
