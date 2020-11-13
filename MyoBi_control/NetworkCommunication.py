@@ -23,15 +23,14 @@ class NetworkCommunication:
         print("Lytter på TCP")
         conn, addr = self.TCP_SOCK.accept()
 
-        while 1:
-            print("Inde i while loopet")
-            data = conn.recv(self.BUFFER_SIZE)
-            print(data)
-            if not data: break # Skal måske fjernes
-            conn.send(data)  # echo
+        print("Inde i while loopet")
+        data = conn.recv(self.BUFFER_SIZE)
+        print(data)
+        conn.send(data)  # echo
         conn.close()
+
         print("Ude af loopet")
-        return data #ikke sikker på denne
+        return data 
 
 
     # UDP
