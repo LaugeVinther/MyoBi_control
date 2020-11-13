@@ -3,10 +3,10 @@ def readFromFile(file):
     return f.read()
 
 def writeToFile(file, text):
-    f = open(filename, "w")
+    f = open(file, "w")
     f.write(text)
 
 def writeLinesToFile(file, array):
-    f = open(filname, "w")
+    f = open(file, "w")
     for i in range(len(array)):
         f.write(array[i])
