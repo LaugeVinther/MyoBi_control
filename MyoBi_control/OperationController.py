@@ -5,7 +5,6 @@ import ConfigurationController as CC
 import threading
 import handConnect as HC
 
-
 #operationState = True
 gripDone = False
 

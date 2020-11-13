@@ -1,8 +1,10 @@
 import SerialHandler as SH
-import NetworkCommunication as NC
+
+NC = NetworkCommunication
 
 gripsArray = []
 operationState = True
+
 
 def listenForStateChange():
     state = NC.receiveTCP()
