@@ -38,7 +38,6 @@ chan3 = AnalogIn(ads, ADS.P3)
 #print("{:>5}\t{:>5}".format("raw", "v"))
 
 def getData():
-    try:
         data = []
         
         data.append(chan0.voltage)
@@ -47,8 +46,6 @@ def getData():
         data.append(chan3.voltage)
 
         return data
-    except KeyboardInterrupt:
-        pass
 
 
 #try:

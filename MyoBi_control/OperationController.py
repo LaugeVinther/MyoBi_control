@@ -3,9 +3,9 @@ import ADCreader as ADC
 import time
 import statistics
 import ConfigurationController as CC
-import concurrent.futures
+import threading
 
-operationState = True
+#operationState = True
 gripDone = False
 
 sensor0 = []
@@ -15,10 +15,9 @@ sensor3 = []
 
 
 def listen():
-	with concurrent.futures.ThreadPoolExecutor() as executor:
-		future = executor.submit(CC.listenForStateChange)
-		return_value = future.result()
-		operationState = return_value
+	thread = threading.Thread(target=CC.listenForStateChange)
+	thread.daemon = True
+	thread.start()
 
 listen()
 grips = CC.loadGrips()
@@ -26,7 +25,7 @@ grips = CC.loadGrips()
 
 while True:
 
-	if (operationState == True):
+	if (CC.operationState == True):
 
 		data = ADC.getData()
 
@@ -126,7 +125,7 @@ while True:
 	else:
 		grips = CC.getGripsFromPC()
 		CC.saveGrips()
-		operationState = True
+		CC.operationState = True
 		listen()
 
 
