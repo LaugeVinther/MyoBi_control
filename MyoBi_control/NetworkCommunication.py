@@ -5,6 +5,7 @@ class NetworkCommunication:
     def __init__(self):
         # Opsætning
         self.IP = socket.gethostbyname(socket.gethostname())
+        print(self.IP)
 
         self.UDP_PORT = 8201
         self.UDP_ADDR = (self.IP, self.UDP_PORT)
