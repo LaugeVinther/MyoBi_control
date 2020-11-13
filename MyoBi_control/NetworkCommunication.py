@@ -2,17 +2,18 @@ import socket
 
 class NetworkCommunication:
 
-    # Opsætning
-    IP = socket.gethostbyname(socket.gethostname())
+    def __init__():
+        # Opsætning
+        IP = socket.gethostbyname(socket.gethostname())
 
-    UDP_PORT = 8201
-    UDP_ADDR = (IP, UDP_PORT)
-    UDP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        UDP_PORT = 8201
+        UDP_ADDR = (IP, UDP_PORT)
+        UDP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    TCP_PORT = 8202
-    TCP_ADDR = (IP, TCP_PORT)
-    TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    BUFFER_SIZE = 1024  # Skiftet fra 20
+        TCP_PORT = 8202
+        TCP_ADDR = (IP, TCP_PORT)
+        TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        BUFFER_SIZE = 1024  # Skiftet fra 20
 
     # TCP
     def receiveTCP():
