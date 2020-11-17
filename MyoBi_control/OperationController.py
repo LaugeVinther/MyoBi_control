@@ -59,7 +59,7 @@ while True:
 					HC.sendCommand(grips[0])
 					gripDone = True
 					print(str(statistics.mean(sensor1)))
-					print('Bottle grip udført (ændret til point)')
+					print(grips[0])
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -83,7 +83,7 @@ while True:
 					HC.sendCommand(grips[1])
 					gripDone = True
 					print(str(statistics.mean(sensor2)))
-					print('Bag grip udført')
+					print(grips[1])
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -106,7 +106,7 @@ while True:
 					HC.sendCommand(grips[2])
 					gripDone = True
 					print(str(statistics.mean(sensor3)))
-					print('Pinch grip udført')
+					print(grips[2])
 					sensor0.clear()
 					sensor1.clear()
 					sensor2.clear()
@@ -114,7 +114,7 @@ while True:
 					time.sleep(1)
 					
 				else:
-					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
+					HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor3)))
 					print('Går tilbage til åben hånd \n\r')
