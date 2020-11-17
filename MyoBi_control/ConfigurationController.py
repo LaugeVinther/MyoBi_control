@@ -25,7 +25,7 @@ def getGripsFromPC():
     grips = grips.decode('utf-8')
     
     global gripsArray
-    gripsArray = grips.split(";").encode()
+    gripsArray = grips.split(";")
 
    # gripsArray = dataSplit[0] + dataSplit[1] + dataSplit[2]
         
@@ -40,6 +40,6 @@ def loadGrips():
     grips = SH.readFromFile("/home/pi/conf/grips/grips.txt")
 
     global gripsArray
-    gripsArray = grips.split(";").encode()
+    gripsArray = grips.split(";")
 
     return gripsArray;
