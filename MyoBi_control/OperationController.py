@@ -22,7 +22,7 @@ def listen():
 listen()
 grips = CC.loadGrips()
 
-print(grips[0] + ", " + grips[1] + ", " + grips[2])
+#print(grips[0] + ", " + grips[1] + ", " + grips[2])
 
 while True:
 
