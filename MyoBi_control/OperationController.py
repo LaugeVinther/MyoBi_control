@@ -56,7 +56,7 @@ while True:
 			
 			if(statistics.mean(sensor1) > 1.5):
 				if(gripDone == False):
-					HC.sendCommand(grips[0].encode('ascii'))
+					HC.sendCommand(grips[0])
 					gripDone = True
 					print(str(statistics.mean(sensor1)))
 					print(grips[0])
@@ -80,7 +80,7 @@ while True:
 
 			elif(statistics.mean(sensor2) > 1.5):
 				if(gripDone == False):
-					HC.sendCommand(grips[1].encode('ascii'))
+					HC.sendCommand(grips[1])
 					gripDone = True
 					print(str(statistics.mean(sensor2)))
 					print(grips[1])
@@ -103,7 +103,7 @@ while True:
 
 			elif(statistics.mean(sensor3) > 1.5):
 				if(gripDone == False):
-					HC.sendCommand(grips[2].encode('ascii'))
+					HC.sendCommand(grips[2])
 					gripDone = True
 					print(str(statistics.mean(sensor3)))
 					print(grips[2])
