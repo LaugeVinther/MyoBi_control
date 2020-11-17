@@ -4,7 +4,7 @@ import NetworkCommunication
 NC = NetworkCommunication.NetworkCommunication()
 
 gripsArray = []
-operationState = True
+state = "operation"
 
 
 def listenForStateChange():
@@ -15,10 +15,13 @@ def listenForStateChange():
 
     if(data == "1"):
         global operationState
-        operationState = True
+        state = "operation"
     elif(data == "2"):
         print("Operation state ændret til false")
-        operationState = False
+        state = "grips"
+    elif(data == "2"):
+        print("Operation state ændret til false")
+        state = "thresholds"
 
 def getGripsFromPC():
     grips = NC.receiveTCP()
@@ -49,3 +52,6 @@ def loadGrips():
         gripsArray[i] = gripsArray[i].replace("nr", "\n\r")
 
     return gripsArray;
+
+def sendDataToPC(data):
+    NC.sendUDP(data)

@@ -5,7 +5,7 @@ import ConfigurationController as CC
 import threading
 import handConnect as HC
 
-#operationState = True
+state = True
 gripDone = False
 
 sensor0 = []
@@ -26,7 +26,7 @@ grips = CC.loadGrips()
 
 while True:
 
-	if (CC.operationState == True):
+	if (CC.state == "operation"):
 
 		data = ADC.getData()
 
@@ -125,7 +125,7 @@ while True:
 					sensor2.clear()
 					sensor3.clear()
 					time.sleep(1)
-	else:
+	elif (CC.state == "grips"):
 		print("Nede i else i operationcontroller")
 		grips = CC.getGripsFromPC()
 
@@ -133,8 +133,19 @@ while True:
 
 
 		CC.saveGrips()
-		CC.operationState = True
+		CC.state = "operation"
 		listen()
+
+	elif (CC.state == "thresholds"):
+		
+		listen() #Listen for changes in state to break while loop
+
+		while (CC.state == "thresholds"):
+			data = ADC.getData()
+			CC.sendDataToPC(data)
+
+		CC.state = "operation"
+		listen() #When loop is finished, start listen thread again
 
 
 

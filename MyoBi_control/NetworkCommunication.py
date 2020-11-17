@@ -4,14 +4,15 @@ class NetworkCommunication:
 
     def __init__(self):
         # Opsætning
-        self.IP = '172.20.10.5'
+        self.TCP_IP = '172.20.10.5'
+        self.UDP_IP = '172.20.10.3'
 
         self.UDP_PORT = 8201
-        self.UDP_ADDR = (self.IP, self.UDP_PORT)
+        self.UDP_ADDR = (self.UDP_IP, self.UDP_PORT)
         self.UDP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
         self.TCP_PORT = 8202
-        self.TCP_ADDR = (self.IP, self.TCP_PORT)
+        self.TCP_ADDR = (self.TCP_IP, self.TCP_PORT)
         self.TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.TCP_SOCK.bind(self.TCP_ADDR)
         self.BUFFER_SIZE = 1024  # Skiftet fra 20
@@ -36,7 +37,8 @@ class NetworkCommunication:
 
     # UDP
     def sendUDP(self, message):
-        sock.sendto(MESSAGE, self.UDP_ADDR)
+        message = message.encode()
+        sock.sendto(message, self.UDP_ADDR)
 
     def receiveUDP(self):
         sock.bind(self.UDP_ADDR)
