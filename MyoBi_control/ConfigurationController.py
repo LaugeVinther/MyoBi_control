@@ -32,8 +32,9 @@ def getGripsFromPC():
     return gripsArray
 
 def saveGrips():
+    global gripsArray
     gripsTxt = gripsArray[0] + ";" + gripsArray[1] + ";" + gripsArray[2]
-    SH.writeLinesToFile("/home/pi/conf/grips/grips.txt", gripsArray)
+    SH.writeLinesToFile("/home/pi/conf/grips/grips.txt", gripsTxt)
 
 def loadGrips():
     grips = SH.readFromFile("/home/pi/conf/grips/grips.txt")
