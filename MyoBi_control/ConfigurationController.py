@@ -22,7 +22,8 @@ def listenForStateChange():
 
 def getGripsFromPC():
     grips = NC.receiveTCP()
-    
+    grips = grips.decode('utf-8')
+
     global gripsArray
     gripsArray = grips.split(";")
 
