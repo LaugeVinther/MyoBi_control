@@ -67,7 +67,7 @@ while True:
 					time.sleep(1)
 					
 				else:
-					HC.sendCommand("b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r'")
+					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
 					#HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor1)))
@@ -91,7 +91,7 @@ while True:
 					time.sleep(1)
 					
 				else:
-					HC.sendCommand("b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r'")
+					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
 					gripDone = False
 					print(str(statistics.mean(sensor2)))
 					print('Går tilbage til åben hånd\n\r')
@@ -114,7 +114,7 @@ while True:
 					time.sleep(1)
 					
 				else:
-					HC.sendCommand("b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r'")
+					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
 					gripDone = False
 					print(str(statistics.mean(sensor3)))
 					print('Går tilbage til åben hånd \n\r')
