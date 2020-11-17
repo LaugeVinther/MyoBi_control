@@ -56,7 +56,7 @@ while True:
 			
 			if(statistics.mean(sensor1) > 1.5):
 				if(gripDone == False):
-					HC.sendCommand(grips[0])
+					HC.sendCommand(grips[0].encode('ascii'))
 					gripDone = True
 					print(str(statistics.mean(sensor1)))
 					print(grips[0])
@@ -67,8 +67,8 @@ while True:
 					time.sleep(1)
 					
 				else:
-					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
-					#HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
+					#HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
+					HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor1)))
 					print('Går tilbage til åben hånd \n\r')
@@ -80,7 +80,7 @@ while True:
 
 			elif(statistics.mean(sensor2) > 1.5):
 				if(gripDone == False):
-					HC.sendCommand(grips[1])
+					HC.sendCommand(grips[1].encode('ascii'))
 					gripDone = True
 					print(str(statistics.mean(sensor2)))
 					print(grips[1])
@@ -91,7 +91,7 @@ while True:
 					time.sleep(1)
 					
 				else:
-					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
+					HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor2)))
 					print('Går tilbage til åben hånd\n\r')
@@ -103,7 +103,7 @@ while True:
 
 			elif(statistics.mean(sensor3) > 1.5):
 				if(gripDone == False):
-					HC.sendCommand(grips[2])
+					HC.sendCommand(grips[2].encode('ascii'))
 					gripDone = True
 					print(str(statistics.mean(sensor3)))
 					print(grips[2])
