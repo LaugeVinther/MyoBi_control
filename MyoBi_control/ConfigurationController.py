@@ -22,10 +22,12 @@ def listenForStateChange():
 
 def getGripsFromPC():
     grips = NC.receiveTCP()
-    grips = grips.decode('utf-8')
     
     global gripsArray
     gripsArray = grips.split(";")
+
+    for i in range(len(gripsArray)):
+        gripsArray[i] = gripsArray[i].replace("nr", "\n\r")
 
    # gripsArray = dataSplit[0] + dataSplit[1] + dataSplit[2]
         
@@ -41,5 +43,8 @@ def loadGrips():
 
     global gripsArray
     gripsArray = grips.split(";")
+
+    for i in range(len(gripsArray)):
+        gripsArray[i] = gripsArray[i].replace("nr", "\n\r")
 
     return gripsArray;
