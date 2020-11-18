@@ -17,10 +17,10 @@ def listenForStateChange():
         global operationState
         state = "operation"
     elif(data == "2"):
-        print("Operation state ændret til false")
+        print("State ændret til grips")
         state = "grips"
     elif(data == "3"):
-        print("Operation state ændret til false")
+        print("State ændret til thresholds")
         state = "thresholds"
 
 def getGripsFromPC():

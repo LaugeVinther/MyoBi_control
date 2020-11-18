@@ -138,6 +138,8 @@ while True:
 
 	elif (CC.state == "thresholds"):
 		
+		print("Nede i thresholds elif")
+
 		listen() #Listen for changes in state to break while loop
 
 		while (CC.state == "thresholds"):
