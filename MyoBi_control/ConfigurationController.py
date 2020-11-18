@@ -19,7 +19,7 @@ def listenForStateChange():
     elif(data == "2"):
         print("Operation state ændret til false")
         state = "grips"
-    elif(data == "2"):
+    elif(data == "3"):
         print("Operation state ændret til false")
         state = "thresholds"
 
