@@ -39,7 +39,6 @@ class NetworkCommunication:
     def sendUDP(self, message):
         message = message.encode()
         self.UDP_SOCK.sendto(message, self.UDP_ADDR)
-        print("UDP besked sendt")
 
     def receiveUDP(self):
         self.UDP_SOCK.bind(self.UDP_ADDR)
