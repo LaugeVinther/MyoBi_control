@@ -142,10 +142,11 @@ while True:
 
 		while (CC.state == "thresholds"):
 			data = ADC.getData()
-			CC.sendDataToPC(data)
+			dataString = data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3]
+			CC.sendDataToPC(dataString)
 
 		CC.state = "operation"
-		listen() #When loop is finished, start listen thread again
+		listen() #When loop is finished, start listen() thread again
 
 
 
