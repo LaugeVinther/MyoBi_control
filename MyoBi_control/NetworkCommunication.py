@@ -38,13 +38,13 @@ class NetworkCommunication:
     # UDP
     def sendUDP(self, message):
         message = message.encode()
-        sock.sendto(message, self.UDP_ADDR)
+        self.UDP_SOCK.sendto(message, self.UDP_ADDR)
         print("UDP besked sendt")
 
     def receiveUDP(self):
-        sock.bind(self.UDP_ADDR)
+        self.UDP_SOCK.bind(self.UDP_ADDR)
 
-        data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes - skal måske ændres (til 4096) hvis der kommer fejl?
+        data, addr = self.UDP_SOCK.recvfrom(1024) # buffer size is 1024 bytes - skal måske ændres (til 4096) hvis der kommer fejl?
         print("received message: %s" % data)
          
         
