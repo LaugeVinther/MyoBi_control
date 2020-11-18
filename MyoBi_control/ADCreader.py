@@ -21,6 +21,7 @@ ads.mode = Mode.CONTINUOUS
 # Create single-ended input on channel 0
 chan0 = AnalogIn(ads, ADS.P0)
 chan1 = AnalogIn(ads, ADS.P1)
+print("ADC-reader blev kørt")
 chan2 = AnalogIn(ads, ADS.P2)
 chan3 = AnalogIn(ads, ADS.P3)
 
