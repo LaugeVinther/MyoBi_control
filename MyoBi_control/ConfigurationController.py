@@ -12,9 +12,9 @@ def listenForStateChange():
     data = data.decode('utf-8')
 
     print(data)
+    global state
 
     if(data == "1"):
-        global operationState
         state = "operation"
     elif(data == "2"):
         print("State ændret til grips")
