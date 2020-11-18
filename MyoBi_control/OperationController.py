@@ -144,7 +144,7 @@ while True:
 
 		while (CC.state == "thresholds"):
 			data = ADC.getData()
-			dataString = data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3]
+			dataString = str(data[0]) + ";" + str(data[1]) + ";" + str(data[2]) + ";" + str(data[3])
 			CC.sendDataToPC(dataString)
 
 		CC.state = "operation"
