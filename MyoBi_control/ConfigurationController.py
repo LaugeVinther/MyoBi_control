@@ -30,6 +30,7 @@ def sendDataToPC(data):
 
 
 def getGripsFromPC():
+    print("Listening for grips")
     grips = NC.receiveTCP()
     grips = grips.decode('utf-8')
 

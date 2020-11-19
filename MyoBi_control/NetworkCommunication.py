@@ -22,16 +22,13 @@ class NetworkCommunication:
     def receiveTCP(self):
 
         self.TCP_SOCK.listen(1)
-        print("Lytter på TCP")
         conn, addr = self.TCP_SOCK.accept()
 
-        print("Inde i while loopet")
         data = conn.recv(self.BUFFER_SIZE)
         print(data)
         conn.send(data)  # echo
         conn.close()
 
-        print("Ude af loopet")
         return data 
 
 
@@ -39,6 +36,7 @@ class NetworkCommunication:
     def sendUDP(self, message):
         message = message.encode()
         self.UDP_SOCK.sendto(message, self.UDP_ADDR)
+        print(message)
 
     def receiveUDP(self):
         self.UDP_SOCK.bind(self.UDP_ADDR)
