@@ -9,6 +9,7 @@ state = "operation"
 listeningForThresholds = False
 
 def listenForStateChange():
+    print("Lytter til state change")
     data = NC.receiveTCP()
     data = data.decode('utf-8')
 
@@ -64,7 +65,9 @@ def loadGrips():
 
 
 def getThresholdsFromPC():
+    global listeningForThresholds
     listeningForThresholds = True
+
     print("Listening for thresholds = true")
 
     thresholds = NC.receiveTCP()

@@ -147,8 +147,9 @@ while True:
 			data = ADC.getData()
 			dataString = str(data[0]) + ";" + str(data[1]) + ";" + str(data[2]) + ";" + str(data[3])
 			CC.sendDataToPC(dataString)
+			print("Jeg er i thresholds while loop")
 		
-			print("While loopet i thresholds brudt")
+		print("While loopet i thresholds brudt")
 		CC.saveThresholds()
 		CC.state = "operation"
 		listenState() #When loop is finished, start listenState() thread again
