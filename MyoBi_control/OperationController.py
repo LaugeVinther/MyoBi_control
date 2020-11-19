@@ -16,13 +16,13 @@ sensor3 = []
 
 def listenState():
 	stateThread = threading.Thread(target=CC.listenForStateChange)
-	thread.daemon = True
-	thread.start()
+	stateThread.daemon = True
+	stateThread.start()
 
 def listenThreshold():
 	thresholdThread = threading.Thread(target=CC.getThresholdsFromPC)
-	thread.daemon = True
-	thread.start()
+	thresholdThread.daemon = True
+	thresholdThread.start()
 
 listenState()
 grips = CC.loadGrips()
