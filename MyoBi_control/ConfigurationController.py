@@ -4,6 +4,7 @@ import NetworkCommunication
 NC = NetworkCommunication.NetworkCommunication()
 
 gripsArray = []
+gripsArrayPC = []
 thresholdArray = []
 state = "operation"
 listeningForThresholds = False
@@ -35,7 +36,8 @@ def getGripsFromPC():
     grips = NC.receiveTCP()
     grips = grips.decode('utf-8')
 
-    global gripsArray
+    global gripsArrayPC
+    gripsArrayPC = grips.split(";")
     gripsArray = grips.split(";")
 
     for i in range(len(gripsArray)):
@@ -47,8 +49,8 @@ def getGripsFromPC():
 
 
 def saveGrips():
-    global gripsArray
-    gripsTxt = gripsArray[0] + ";" + gripsArray[1] + ";" + gripsArray[2]
+    global gripsArrayPC
+    gripsTxt = gripsArrayPC[0] + ";" + gripsArrayPC[1] + ";" + gripsArrayPC[2]
     SH.writeToFile("/home/pi/conf/grips/grips.txt", gripsTxt)
 
 
