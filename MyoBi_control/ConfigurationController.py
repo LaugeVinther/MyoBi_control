@@ -65,11 +65,11 @@ def loadGrips():
 def getThresholdsFromPC():
     listeningForThresholds = True
 
-    grips = NC.receiveTCP()
-    grips = grips.decode('utf-8')
+    thresholds = NC.receiveTCP()
+    thresholds = thresholds.decode('utf-8')
 
     global thresholdArray
-    thresholdArray = grips.split(";")
+    thresholdArray = thresholds.split(";")
 
     listeningForThresholds = False
 

@@ -31,7 +31,6 @@ thresholds = CC.loadThresholds()
 while True:
 
 	if (CC.state == "operation"):
-		print("I operation state")
 
 		data = ADC.getData()
 
@@ -59,7 +58,7 @@ while True:
 			sensor2.append(data[2])
 			sensor3.append(data[3])
 			
-			if(statistics.mean(sensor1) > thresholds[0]):
+			if(statistics.mean(sensor1) > float(thresholds[0])):
 				if(gripDone == False):
 					HC.sendCommand(grips[0])
 					gripDone = True
@@ -82,7 +81,7 @@ while True:
 					sensor3.clear()
 					time.sleep(1)
 
-			elif(statistics.mean(sensor2) > thresholds[1]):
+			elif(statistics.mean(sensor2) > float(thresholds[1])):
 				if(gripDone == False):
 					HC.sendCommand(grips[1])
 					gripDone = True
@@ -105,7 +104,7 @@ while True:
 					sensor3.clear()
 					time.sleep(1)
 
-			elif(statistics.mean(sensor3) > thresholds[2]):
+			elif(statistics.mean(sensor3) > float(thresholds[2])):
 				if(gripDone == False):
 					HC.sendCommand(grips[2])
 					gripDone = True
