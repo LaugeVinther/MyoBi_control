@@ -4,8 +4,9 @@ import NetworkCommunication
 NC = NetworkCommunication.NetworkCommunication()
 
 gripsArray = []
+thresholdArray = []
 state = "operation"
-
+listeningForThresholds = False
 
 def listenForStateChange():
     data = NC.receiveTCP()
@@ -23,6 +24,11 @@ def listenForStateChange():
         print("State ændret til thresholds")
         state = "thresholds"
 
+
+def sendDataToPC(data):
+    NC.sendUDP(data)
+
+
 def getGripsFromPC():
     grips = NC.receiveTCP()
     grips = grips.decode('utf-8')
@@ -37,10 +43,12 @@ def getGripsFromPC():
         
     return gripsArray
 
+
 def saveGrips():
     global gripsArray
     gripsTxt = gripsArray[0] + ";" + gripsArray[1] + ";" + gripsArray[2]
     SH.writeToFile("/home/pi/conf/grips/grips.txt", gripsTxt)
+
 
 def loadGrips():
     grips = SH.readFromFile("/home/pi/conf/grips/grips.txt")
@@ -53,5 +61,29 @@ def loadGrips():
 
     return gripsArray;
 
-def sendDataToPC(data):
-    NC.sendUDP(data)
+
+def getThresholdsFromPC():
+    listeningForThresholds = True
+
+    grips = NC.receiveTCP()
+    grips = grips.decode('utf-8')
+
+    global thresholdArray
+    thresholdArray = grips.split(";")
+
+    listeningForThresholds = False
+
+
+def saveThresholds():
+    global thresholdArray
+    thresholdTxt = thresholdArray[0] + ";" + thresholdArray[1] + ";" + thresholdArray[2]
+    SH.writeToFile("/home/pi/conf/thresholds/thresholds.txt", thresholdTxt)
+
+
+def loadThresholds():
+    thresholds = SH.readFromFile("/home/pi/conf/thresholds/thresholds.txt")
+
+    global thresholdArray
+    thresholdArray = thresholds.split(";")
+
+    return thresholdArray;

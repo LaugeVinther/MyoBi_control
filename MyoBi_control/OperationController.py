@@ -14,23 +14,28 @@ sensor2 = []
 sensor3 = []
 
 
-def listen():
-	thread = threading.Thread(target=CC.listenForStateChange)
+def listenState():
+	stateThread = threading.Thread(target=CC.listenForStateChange)
 	thread.daemon = True
 	thread.start()
 
-listen()
-grips = CC.loadGrips()
+def listenThreshold():
+	thresholdThread = threading.Thread(target=CC.getThresholdsFromPC)
+	thread.daemon = True
+	thread.start()
 
-#print(grips[0] + ", " + grips[1] + ", " + grips[2])
+listenState()
+grips = CC.loadGrips()
+thresholds = CC.loadThresholds()
 
 while True:
 
 	if (CC.state == "operation"):
+		print("I operation state")
 
 		data = ADC.getData()
 
-		if(len(sensor0)<50):
+		if(len(sensor0)<25): #Ændret fra 50. Forsøg!!
 			sensor0.append(data[0])
 			sensor1.append(data[1])
 			sensor2.append(data[2])
@@ -54,7 +59,7 @@ while True:
 			sensor2.append(data[2])
 			sensor3.append(data[3])
 			
-			if(statistics.mean(sensor1) > 1.5):
+			if(statistics.mean(sensor1) > thresholds[0]):
 				if(gripDone == False):
 					HC.sendCommand(grips[0])
 					gripDone = True
@@ -68,7 +73,6 @@ while True:
 					
 				else:
 					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
-					#HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor1)))
 					print('Går tilbage til åben hånd \n\r')
@@ -78,7 +82,7 @@ while True:
 					sensor3.clear()
 					time.sleep(1)
 
-			elif(statistics.mean(sensor2) > 1.5):
+			elif(statistics.mean(sensor2) > thresholds[1]):
 				if(gripDone == False):
 					HC.sendCommand(grips[1])
 					gripDone = True
@@ -92,7 +96,6 @@ while True:
 					
 				else:
 					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
-					#HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor2)))
 					print('Går tilbage til åben hånd\n\r')
@@ -102,7 +105,7 @@ while True:
 					sensor3.clear()
 					time.sleep(1)
 
-			elif(statistics.mean(sensor3) > 1.5):
+			elif(statistics.mean(sensor3) > thresholds[2]):
 				if(gripDone == False):
 					HC.sendCommand(grips[2])
 					gripDone = True
@@ -116,7 +119,6 @@ while True:
 					
 				else:
 					HC.sendCommand("F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r")
-					#HC.sendCommand(b'F0 P0 \n\r F1 P0 \n\r F2 P0 \n\r F3 P0 \n\r')
 					gripDone = False
 					print(str(statistics.mean(sensor3)))
 					print('Går tilbage til åben hånd \n\r')
@@ -125,30 +127,31 @@ while True:
 					sensor2.clear()
 					sensor3.clear()
 					time.sleep(1)
+
 	elif (CC.state == "grips"):
-		print("Nede i else i operationcontroller")
+		print("I grips state")
+
 		grips = CC.getGripsFromPC()
 
 		print(grips[0] + ", " + grips[1] + ", " + grips[2])
 
-
 		CC.saveGrips()
 		CC.state = "operation"
-		listen()
+		listenState()
 
 	elif (CC.state == "thresholds"):
-		
-		print("Nede i thresholds elif")
+		print("I thresholds state")
 
-		listen() #Listen for changes in state to break while loop
+		listenThreshold() #Listen for TCP message with thresholds
 
-		while (CC.state == "thresholds"):
+		while (CC.listeningForThresholds == True):
 			data = ADC.getData()
 			dataString = str(data[0]) + ";" + str(data[1]) + ";" + str(data[2]) + ";" + str(data[3])
 			CC.sendDataToPC(dataString)
 
+		CC.saveThresholds()
 		CC.state = "operation"
-		listen() #When loop is finished, start listen() thread again
+		listenState() #When loop is finished, start listenState() thread again
 
 
 
