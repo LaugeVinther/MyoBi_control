@@ -92,7 +92,7 @@ def saveThresholds():
 def loadThresholds():
     thresholds = SH.readFromFile("/home/pi/conf/thresholds/thresholds.txt")
 
-    thresholds.replace(",", ".")
+    thresholds = thresholds.replace(",", ".")
 
     global thresholdArray
     thresholdArray = thresholds.split(";")
