@@ -81,12 +81,15 @@ def getThresholdsFromPC():
     thresholds = NC.receiveTCP()
     thresholds = thresholds.decode('utf-8')
 
-    global thresholdArray
-    thresholdArray = thresholds.split(";")
+    if (thresholds == "1"):
+        cancelled == True
+        listeningForThresholds = False
 
-    listeningForThresholds = False
-    print("Listening for thresholds = false")
-
+    else:
+        global thresholdArray
+        thresholdArray = thresholds.split(";")
+        print("Listening for thresholds = false")
+        listeningForThresholds = False        
 
 
 def saveThresholds():

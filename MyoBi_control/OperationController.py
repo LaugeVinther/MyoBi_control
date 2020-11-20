@@ -133,12 +133,14 @@ while True:
 		
 		grips = CC.getGripsFromPC()
 
-		if (CC.cancelled == False):
+		if (CC.cancelled == True):
+			CC.cancelled == False
+			print("Thresholds er cancelled")
+		else:
 			print(grips[0] + ", " + grips[1] + ", " + grips[2])
 			CC.saveGrips()
-		else:
-			CC.cancelled == False
-		
+
+				
 		CC.state = "operation"
 		listenState()
 
@@ -148,12 +150,18 @@ while True:
 		listenThreshold() #Listen for TCP message with thresholds
 
 		while (CC.listeningForThresholds == True):
-			data = ADC.getData()
-			dataString = str(data[0]) + ";" + str(data[1]) + ";" + str(data[2]) + ";" + str(data[3])
-			CC.sendDataToPC(dataString)
+				data = ADC.getData()
+				dataString = str(data[0]) + ";" + str(data[1]) + ";" + str(data[2]) + ";" + str(data[3])
+				CC.sendDataToPC(dataString)
 		
-		print("While loopet i thresholds brudt")
-		CC.saveThresholds()
+		if (CC.cancelled == True):
+			CC.cancelled = False
+			print("Thresholds er cancelled")
+		else:
+			print("While loopet i thresholds brudt")
+			CC.saveThresholds()
+			CC.cancelled = False
+
 		CC.state = "operation"
 		listenState() #When loop is finished, start listenState() thread again
 
