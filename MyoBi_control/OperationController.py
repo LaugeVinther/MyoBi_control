@@ -157,6 +157,8 @@ while True:
 		if (CC.cancelled == True):
 			CC.cancelled = False
 			print("Thresholds er cancelled")
+			print("While loopet i thresholds brudt")
+
 		else:
 			print("While loopet i thresholds brudt")
 			CC.saveThresholds()

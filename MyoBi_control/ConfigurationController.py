@@ -84,6 +84,8 @@ def getThresholdsFromPC():
     if (thresholds == "1"):
         cancelled == True
         listeningForThresholds = False
+        print("Listening for thresholds = false")
+
 
     else:
         global thresholdArray
