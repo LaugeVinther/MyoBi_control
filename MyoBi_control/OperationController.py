@@ -130,11 +130,15 @@ while True:
 	elif (CC.state == "grips"):
 		print("I grips state")
 
+		
 		grips = CC.getGripsFromPC()
 
-		print(grips[0] + ", " + grips[1] + ", " + grips[2])
-
-		CC.saveGrips()
+		if (CC.cancelled == False):
+			print(grips[0] + ", " + grips[1] + ", " + grips[2])
+			CC.saveGrips()
+		else:
+			CC.cancelled == False
+		
 		CC.state = "operation"
 		listenState()
 

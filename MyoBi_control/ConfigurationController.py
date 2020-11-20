@@ -8,6 +8,7 @@ gripsArrayPC = []
 thresholdArray = []
 state = "operation"
 listeningForThresholds = False
+cancelled = True
 
 def listenForStateChange():
     print("Lytter til state change")
@@ -36,16 +37,21 @@ def getGripsFromPC():
     grips = NC.receiveTCP()
     grips = grips.decode('utf-8')
 
-    global gripsArrayPC
-    gripsArrayPC = grips.split(";")
-    gripsArray = grips.split(";")
+    if (grips == "1"):
+        global cancelled
+        cancelled = True
 
-    for i in range(len(gripsArray)):
-        gripsArray[i] = gripsArray[i].replace("nr", "\n\r")
+    else:
+        global gripsArrayPC
+        gripsArrayPC = grips.split(";")
+        gripsArray = grips.split(";")
 
-   # gripsArray = dataSplit[0] + dataSplit[1] + dataSplit[2]
+        for i in range(len(gripsArray)):
+            gripsArray[i] = gripsArray[i].replace("nr", "\n\r")
+
+       # gripsArray = dataSplit[0] + dataSplit[1] + dataSplit[2]
         
-    return gripsArray
+        return gripsArray
 
 
 def saveGrips():
