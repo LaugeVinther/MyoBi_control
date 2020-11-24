@@ -8,7 +8,7 @@ gripsArrayPC = []
 thresholdArray = []
 state = "operation"
 listeningForThresholds = False
-cancelled = True
+cancelled = False
 
 def listenForStateChange():
     print("Lytter til state change")
