@@ -130,13 +130,13 @@ while True:
 	elif (CC.state == "grips"):
 		print("I grips state")
 
-		
-		grips = CC.getGripsFromPC()
+		PCgrips = CC.getGripsFromPC()
 
 		if (CC.cancelled == True):
-			CC.cancelled == False
-			print("Thresholds er cancelled")
+			CC.cancelled = False
+			print("Grips er cancelled")
 		else:
+			grips = PCgrips
 			print(grips[0] + ", " + grips[1] + ", " + grips[2])
 			CC.saveGrips()
 
@@ -162,7 +162,6 @@ while True:
 		else:
 			print("While loopet i thresholds brudt")
 			CC.saveThresholds()
-			CC.cancelled = False
 
 		CC.state = "operation"
 		listenState() #When loop is finished, start listenState() thread again
