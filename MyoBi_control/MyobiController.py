@@ -1,6 +1,7 @@
 import ADCreader as ADC
 import time
 import statistics
+import board
 import ConfigurationController as CC
 import threading
 import handConnect as HC
