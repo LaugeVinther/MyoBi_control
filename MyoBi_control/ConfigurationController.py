@@ -48,8 +48,6 @@ def getGripsFromPC():
 
         for i in range(len(gripsArray)):
             gripsArray[i] = gripsArray[i].replace("nr", "\n\r")
-
-       # gripsArray = dataSplit[0] + dataSplit[1] + dataSplit[2]
         
         return gripsArray
 

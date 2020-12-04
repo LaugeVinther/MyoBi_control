@@ -5,7 +5,6 @@ import ConfigurationController as CC
 import threading
 import handConnect as HC
 
-state = True
 gripDone = False
 
 sensor0 = []
@@ -165,18 +164,6 @@ while True:
 
 		CC.state = "operation"
 		listenState() #When loop is finished, start listenState() thread again
-
-
-
-
-
-		#end = time.monotonic() #tidsmåling
-
-		#total_time = end - start #tidsmåling
-
-		#print("Time of capture: {}s".format(total_time)) #tidsmåling
-		#print("Sample rate={}".format(samples / total_time)) #tidsmåling
-		#print('\nSamples:' + str(samples))
 
 
 

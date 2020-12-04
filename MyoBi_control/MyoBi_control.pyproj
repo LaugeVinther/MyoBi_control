@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ebaf6ab5-eb2d-45d2-892a-5c791fc77e8e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OperationController.py</StartupFile>
+    <StartupFile>MyobiController.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,14 +30,11 @@
     <Compile Include="HandConnect.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="OperationController.py" />
+    <Compile Include="MyobiController.py" />
     <Compile Include="NetworkCommunication.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SerialHandler.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="StateController.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
