@@ -4,12 +4,12 @@ class NetworkCommunication:
 
     def __init__(self):
         # Opsætning
-        self.UDP_IP = '172.20.10.3'
+        self.UDP_IP = '172.20.10.6'
         self.UDP_PORT = 8201
         self.UDP_ADDR = (self.UDP_IP, self.UDP_PORT)
         self.UDP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-        self.TCP_IP = '172.20.10.6  '
+        self.TCP_IP = '172.20.10.5'
         self.TCP_PORT = 8202
         self.TCP_ADDR = (self.TCP_IP, self.TCP_PORT)
         self.TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
