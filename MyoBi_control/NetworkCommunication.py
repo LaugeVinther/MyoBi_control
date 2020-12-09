@@ -4,7 +4,7 @@ class NetworkCommunication:
 
     def __init__(self):
         # Opsætning
-        self.UDP_IP = '172.20.10.6'
+        self.UDP_IP = '172.20.10.3'
         self.UDP_PORT = 8201
         self.UDP_ADDR = (self.UDP_IP, self.UDP_PORT)
         self.UDP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
