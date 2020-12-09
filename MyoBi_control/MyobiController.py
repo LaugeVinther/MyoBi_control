@@ -161,6 +161,7 @@ while True:
 		else:
 			print("While loopet i thresholds brudt")
 			CC.saveThresholds()
+			thresholds = CC.thresholdArray
 
 		CC.state = "operation"
 		listenState() #When loop is finished, start listenState() thread again
