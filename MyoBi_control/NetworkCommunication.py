@@ -15,7 +15,7 @@ class NetworkCommunication:
         self.TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.TCP_SOCK.bind(self.TCP_ADDR)
 
-        self.BUFFER_SIZE = 1024  # Skiftet fra 20
+        self.BUFFER_SIZE = 1024 
 
 
     # TCP

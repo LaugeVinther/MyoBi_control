@@ -33,7 +33,7 @@ while True:
 
 		data = ADC.getData()
 
-		if(len(sensor0)<25): #Ændret fra 50. Forsøg!!
+		if(len(sensor0)<25): #Ændret fra 50
 			sensor0.append(data[0])
 			sensor1.append(data[1])
 			sensor2.append(data[2])
